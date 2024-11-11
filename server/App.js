@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 
 const corsOptions = {
-    origin: '*',
+    origin: 'https://task-management-app-2024.web.app/',
     credentials: true,
 };
 
