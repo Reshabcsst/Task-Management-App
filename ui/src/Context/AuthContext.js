@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
     const login = async (credentials) => {
         const { data } = await axios.post(`${Host}/api/login`, credentials);
         localStorage.setItem('token', data.token);
+        window.location.reload();
         setIsAuthenticated(true);
     };
 

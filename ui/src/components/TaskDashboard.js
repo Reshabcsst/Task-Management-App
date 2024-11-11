@@ -112,11 +112,13 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
         return () => clearInterval(interval);
     }, [tasks]);
 
+    const filteredTasks = tasks.filter(task => !filter || task.status === filter);
     return (
         <ul className="task-list">
-            {tasks
-                .filter(task => !filter || task.status === filter)
-                .map(task => {
+            {filteredTasks.length === 0 ? (
+                <p className='no'>No task available</p>
+            ) : (
+                filteredTasks.map(task => {
                     const timeLeft = timeLefts.find(t => t._id === task._id)?.timeLeft || calculateTimeLeft(task.dueDate);
                     const dueDateFormatted = formatDueDate(task.dueDate);
                     const showTimeRemaining = task.status !== 'Completed' && timeLeft !== 'You are late';
@@ -127,18 +129,15 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
                             <p>{task.description}</p>
                             <p>Status: {task.status}</p>
                             <p>Due Date: {dueDateFormatted}</p>
-                            {task.status !== 'Completed' && timeLeft === 'You are late' ? (
-                                <p>Time Remaining: {timeLeft}</p>
-                            ) : (
-                                showTimeRemaining && <p>Time Remaining: {timeLeft}</p>
-                            )}
+                            {showTimeRemaining && <p>Time Remaining: {timeLeft}</p>}
                             <div className="in">
                                 <button onClick={() => window.location = `/edit-task/${task._id}`} className="btn">Edit</button>
                                 <button onClick={() => handleDelete(task._id)} className="btn btn-delete">Delete</button>
                             </div>
                         </li>
                     );
-                })}
+                })
+            )}
         </ul>
     );
 };

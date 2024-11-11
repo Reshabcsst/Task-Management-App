@@ -8,12 +8,12 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (!username || !password || !confirmPassword) {
       setError('Please fill all the fields.');
       return;
@@ -28,8 +28,13 @@ const Register = () => {
       const { data } = await axios.post(`${Host}/api/register`, { username, password });
 
       if (data && data.message === 'User registered successfully') {
-        setError(''); 
-        navigate('/'); 
+        setError('');
+        setSuccessMessage('Registration successful! Redirecting to login...');
+        
+        setTimeout(() => {
+          setSuccessMessage('');
+          navigate('/');
+        }, 2000);
       }
     } catch (error) {
       console.error('Registration error:', error);
@@ -47,6 +52,7 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
         {error && <div className="error-popup">{error}</div>} 
+        {successMessage && <div className="success-popup">{successMessage}</div>} 
 
         <input
           type="text"

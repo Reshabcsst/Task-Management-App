@@ -11,6 +11,11 @@
   font-family: Arial, sans-serif;
 }
 
+.no {
+  text-align: center;
+  margin-top: 6rem;
+}
+
 .tabs {
   display: flex;
   justify-content: space-around;
@@ -258,12 +263,12 @@
   border: 1px solid #ccc;
 }
 
-.login-form p{
+.login-form p {
   margin: 10px;
   font-size: 15px;
 }
 
-.login-form p span{
+.login-form p span {
   color: #00234e;
   font-weight: 500;
   cursor: pointer;
@@ -352,4 +357,14 @@
   border-radius: 5px;
   text-align: center;
   border: 1px solid #ffcccc;
+}
+
+.success-popup {
+  color: green;
+  background-color: #e8ffe6;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ceffcc;
 }
