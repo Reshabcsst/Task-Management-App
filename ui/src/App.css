@@ -1,0 +1,355 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.task-dashboard {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.h {
+  width: fit-content;
+  display: inline;
+  margin-top: 2rem;
+}
+
+.tb {
+  margin-left: 30px;
+  padding: 8px 12px;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 5px;
+}
+
+.td {
+  margin-left: 30px;
+  padding: 8px 12px;
+  border: none;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  width: fit-content;
+  display: inline;
+  background-color: #dc3545;
+}
+
+.tab {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.tab:hover,
+.tab.active {
+  color: #007BFF;
+  border-bottom-color: #007BFF;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  background: #f9f9f9;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.btn {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background-color: #007BFF;
+  border-radius: 5px;
+  width: fit-content;
+  display: inline;
+}
+
+.btn-delete {
+  width: fit-content;
+  display: inline;
+  background-color: #dc3545;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+
+/* Edit Task */
+.edit-task-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f7fb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-task-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.edit-task-form input,
+.edit-task-form textarea,
+.edit-task-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.edit-task-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.edit-task-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-task-form button:hover {
+  background-color: #0056b3;
+}
+
+.edit-task-form button:active {
+  background-color: #00408c;
+}
+
+
+
+/* Create Task */
+.create-task-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f7fb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ffcccc;
+}
+
+.success-message {
+  color: green;
+  background-color: #e8ffe6;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ceffcc;
+}
+
+.create-task-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.create-task-form input,
+.create-task-form select,
+.create-task-form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.create-task-form input[type="text"],
+.create-task-form input[type="date"] {
+  height: 40px;
+}
+
+.create-task-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-task-form button:hover {
+  background-color: #0056b3;
+}
+
+.create-task-form button:active {
+  background-color: #00408c;
+}
+
+.create-task-form select {
+  height: 40px;
+}
+
+
+
+/* Login */
+.login-form {
+  max-width: 400px;
+  margin: 5rem auto 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f7fb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.login-form p{
+  margin: 10px;
+  font-size: 15px;
+}
+
+.login-form p span{
+  color: #00234e;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+.login-form button:active {
+  background-color: #00408c;
+}
+
+.error-popup {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ffcccc;
+}
+
+
+
+/* Register */
+.register-form {
+  max-width: 400px;
+  margin: 5rem auto 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f7fb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+  background-color: #0056b3;
+}
+
+.register-form button:active {
+  background-color: #00408c;
+}
+
+.error-popup {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ffcccc;
+}
