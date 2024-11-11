@@ -321,6 +321,16 @@
   color: #333;
 }
 
+.register-form p {
+  margin: 10px;
+  font-size: 15px;
+}
+
+.register-form p span {
+  color: #00234e;
+  font-weight: 500;
+  cursor: pointer;
+}
 .register-form input {
   width: 100%;
   padding: 12px;

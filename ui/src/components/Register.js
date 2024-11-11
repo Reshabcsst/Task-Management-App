@@ -9,6 +9,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,13 +25,16 @@ const Register = () => {
       return;
     }
 
+    setLoading(true);
+    setError('');
+
     try {
       const { data } = await axios.post(`${Host}/api/register`, { username, password });
 
       if (data && data.message === 'User registered successfully') {
         setError('');
         setSuccessMessage('Registration successful! Redirecting to login...');
-        
+
         setTimeout(() => {
           setSuccessMessage('');
           navigate('/');
@@ -44,6 +48,8 @@ const Register = () => {
       } else {
         setError('Network error. Please try again.');
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,28 +57,32 @@ const Register = () => {
     <div className="register-form">
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
-        {error && <div className="error-popup">{error}</div>} 
-        {successMessage && <div className="success-popup">{successMessage}</div>} 
+        {error && <div className="error-popup">{error}</div>}
+        {successMessage && <div className="success-popup">{successMessage}</div>}
 
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          disabled={loading}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          disabled={loading}
         />
         <input
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          disabled={loading}
         />
-        <button type="submit">Register</button>
+        <p>Already have an account?<span onClick={() => navigate('/')}> Sign In</span></p>
+        <button type="submit" disabled={loading}>{loading ? 'Registering...' : 'Register'}</button>
       </form>
     </div>
   );

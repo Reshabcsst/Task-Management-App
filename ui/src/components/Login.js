@@ -7,6 +7,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -17,12 +18,17 @@ const Login = () => {
             return;
         }
 
+        setLoading(true); 
+        setError(''); 
+
         try {
             await login({ username, password });
-            setError('');
+            setLoading(false); 
+            navigate('/');
         } catch (error) {
             console.error('Login error:', error);
             setError('Invalid username or password');
+            setLoading(false); 
         }
     };
 
@@ -30,22 +36,24 @@ const Login = () => {
         <div className="login-form">
             <form onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                {error && <div className="error-popup">{error}</div>} {/* Error popup */}
+                {error && <div className="error-popup">{error}</div>}
 
                 <input
                     type="text"
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    disabled={loading} 
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading} 
                 />
-                <p>Don't have account?<span onClick={() => { navigate('/register') }}> Sign Up</span></p>
-                <button type="submit">Login</button>
+                <p>Don't have an account?<span onClick={() => navigate('/register')}> Sign Up</span></p>
+                <button type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button> 
             </form>
         </div>
     );
