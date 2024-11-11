@@ -18,7 +18,7 @@
 
 .tabs {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
@@ -72,7 +72,6 @@
 }
 
 .task-item {
-  background: #f9f9f9;
   margin-bottom: 15px;
   padding: 15px;
   display: flex;
@@ -80,6 +79,22 @@
   gap: .5rem;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.status-pending {
+  background-color: #ffe6e6;
+  border: 1px solid #ffcccc;
+}
+
+.status-in-progress {
+  background-color: #fffbe6;
+  border: 1px solid #fffacc;
+}
+
+.status-complete {
+  background-color: #e8ffe6;
+  border: 1px solid #ceffcc;
 }
 
 .task-item h3 {
@@ -187,11 +202,11 @@
 .success-message {
   color: green;
   background-color: #e8ffe6;
+  border: 1px solid #ceffcc;
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 5px;
   text-align: center;
-  border: 1px solid #ceffcc;
 }
 
 .create-task-form h2 {

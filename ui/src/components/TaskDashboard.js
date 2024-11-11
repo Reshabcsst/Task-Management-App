@@ -73,6 +73,7 @@ const TaskDashboard = () => {
 const TaskList = ({ tasks, filter, handleDelete }) => {
     const calculateTimeLeft = (dueDate) => {
         const currentDate = new Date();
+        console.log(dueDate)
         const dueDateObj = new Date(dueDate);
         const timeDifference = dueDateObj - currentDate;
 
@@ -124,7 +125,7 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
                     const showTimeRemaining = task.status !== 'Completed' && timeLeft !== 'You are late';
 
                     return (
-                        <li key={task._id} className="task-item">
+                        <li key={task._id}  className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
                             <h3>{task.title}</h3>
                             <p>{task.description}</p>
                             <p>Status: {task.status}</p>
