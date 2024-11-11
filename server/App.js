@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 
 const corsOptions = {
-    origin: 'https://task-management-app-2024.web.app/register',
+    origin: 'https://task-management-app-axq2.onrender.com/api/register',
     credentials: true,
 };
 
