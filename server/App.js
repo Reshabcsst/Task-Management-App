@@ -9,12 +9,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
 const corsOptions = {
-    origin: 'https://task-management-app-axq2.onrender.com/api/register',
-    credentials: true,
+    origin: 'https://task-management-app-2024.web.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 };
-
 
 app.use(cors(corsOptions));
 
