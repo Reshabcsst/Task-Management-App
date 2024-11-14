@@ -98,9 +98,14 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .6rem;
+  color: rgb(56, 56, 56);
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item p {
+  font-weight: 500;
 }
 
 
@@ -111,7 +116,7 @@
 
 .status-in-progress {
   background-color: #fffbe6;
-  border: 1px solid #fffacc;
+  border: 1px solid #fff6a3;
 }
 
 .status-complete {
@@ -121,7 +126,7 @@
 
 .task-item h3 {
   margin-top: 0;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .btn {

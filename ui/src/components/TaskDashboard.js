@@ -137,7 +137,11 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
 
                     return (
                         <li key={task._id} className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
-                            <h3>{task.title}</h3>
+                            <h3
+                                style={{
+                                    color: task.status === 'Pending' ? 'red' : task.status === 'In Progress' ? '#d5d500' : 'green'
+                                }}
+                            >{task.title}</h3>
                             <p>{task.description}</p>
                             <p>Status: {task.status}</p>
                             <p>Due Date: {dueDateFormatted}</p>
