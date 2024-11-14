@@ -4,19 +4,20 @@ import Login from './components/Login';
 import TaskDashboard from './components/TaskDashboard';
 import CreateTask from './components/CreateTask';
 import EditTask from './components/EditTask';
-import AuthContext from './Context/AuthContext';
-import { useContext } from 'react';
 import Register from './components/Register';
+import ServerStatus from './ServerStatus';
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const isLogin = JSON.parse(localStorage.getItem('isToken'));
   return (
-    <Routes>
-      <Route path="/" element={isAuthenticated ? <TaskDashboard /> : <Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/create-task" element={isAuthenticated ? <CreateTask /> : <Navigate to='/' />} />
-      <Route path="/edit-task/:id" element={isAuthenticated ? <EditTask /> : <Navigate to='/' />} />
-    </Routes>
+    <ServerStatus>
+      <Routes>
+        <Route path="/" element={isLogin ? <TaskDashboard /> : <Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/create-task" element={isLogin ? <CreateTask /> : <Navigate to='/' />} />
+        <Route path="/edit-task/:id" element={isLogin ? <EditTask /> : <Navigate to='/' />} />
+      </Routes>
+    </ServerStatus>
   );
 }
 

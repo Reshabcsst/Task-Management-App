@@ -73,17 +73,28 @@ const TaskDashboard = () => {
 const TaskList = ({ tasks, filter, handleDelete }) => {
     const calculateTimeLeft = (dueDate) => {
         const currentDate = new Date();
-        console.log(dueDate)
         const dueDateObj = new Date(dueDate);
-        const timeDifference = dueDateObj - currentDate;
 
-        if (timeDifference <= 0) {
-            return 'You are late';
+        const midnightCurrentDate = new Date(currentDate);
+        midnightCurrentDate.setHours(0, 0, 0, 0);
+
+        const midnightDueDate = new Date(dueDateObj);
+        midnightDueDate.setHours(0, 0, 0, 0);
+
+        const dateDifference = midnightDueDate - midnightCurrentDate;
+
+        if (dateDifference < 0) {
+            return 'Due date expired';
+        } else if (dateDifference === 0) {
+            return 'Due today';
         } else {
+            const timeDifference = dueDateObj - currentDate;
+
             const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
             return `${daysLeft}d ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
         }
     };
@@ -125,7 +136,7 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
                     const showTimeRemaining = task.status !== 'Completed' && timeLeft !== 'You are late';
 
                     return (
-                        <li key={task._id}  className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
+                        <li key={task._id} className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
                             <h3>{task.title}</h3>
                             <p>{task.description}</p>
                             <p>Status: {task.status}</p>
