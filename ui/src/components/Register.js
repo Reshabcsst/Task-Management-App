@@ -54,36 +54,38 @@ const Register = () => {
   };
 
   return (
-    <div className="register-form">
-      <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        {error && <div className="error-popup">{error}</div>}
-        {successMessage && <div className="success-popup">{successMessage}</div>}
+    <div className='into'>
+      <div className="register-form">
+        <form onSubmit={handleSubmit}>
+          <h2>Register</h2>
+          {error && <div className="error-popup">{error}</div>}
+          {successMessage && <div className="success-popup">{successMessage}</div>}
 
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          disabled={loading}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={loading}
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          disabled={loading}
-        />
-        <p>Already have an account?<span onClick={() => navigate('/')}> Sign In</span></p>
-        <button type="submit" disabled={loading}>{loading ? 'Registering...' : 'Register'}</button>
-      </form>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            disabled={loading}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={loading}
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            disabled={loading}
+          />
+          <p>Already have an account?<span onClick={() => navigate('/')}> Sign In</span></p>
+          <button type="submit" disabled={loading}>{loading ? 'Registering...' : 'Register'}</button>
+        </form>
+      </div>
     </div>
   );
 };

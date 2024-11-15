@@ -281,9 +281,16 @@
 
 
 /* Login */
+.into{
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login-form {
   max-width: 400px;
-  margin: 5rem auto 0 auto;
+  align-self: center;
+  justify-self: center;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -350,7 +357,6 @@
 /* Register */
 .register-form {
   max-width: 400px;
-  margin: 5rem auto 0 auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
