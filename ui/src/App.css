@@ -155,7 +155,6 @@
 /* Edit Task */
 .edit-task-form {
   max-width: 600px;
-  margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -209,7 +208,6 @@
 /* Create Task */
 .create-task-form {
   max-width: 600px;
-  margin: 40px auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
