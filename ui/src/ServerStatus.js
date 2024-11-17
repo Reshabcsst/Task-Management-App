@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Host from './Utils/Utils';
 
 const ServerStatus = ({ children }) => {
     const [isServerConnected, setIsServerConnected] = useState(null);
@@ -6,7 +7,7 @@ const ServerStatus = ({ children }) => {
     useEffect(() => {
         const checkServerConnection = async () => {
             try {
-                const response = await fetch('http://localhost:4000/api/check');
+                const response = await fetch(`${Host}/api/check`);
                 if (response.ok) {
                     setIsServerConnected(true);
                 } else {
