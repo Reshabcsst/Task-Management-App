@@ -6,6 +6,8 @@ import AuthContext from '../Context/AuthContext';
 
 const TaskDashboard = () => {
     const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [filter, setFilter] = useState('');
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,6 +18,7 @@ const TaskDashboard = () => {
             if (!token) return;
 
             try {
+                setLoading(true); // Start loading
                 const response = await axios.get(`${Host}/api/tasks`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -23,7 +26,10 @@ const TaskDashboard = () => {
                 });
                 setTasks(response.data);
             } catch (error) {
+                setError('Error fetching tasks. Please try again.');
                 console.error('Error fetching tasks:', error);
+            } finally {
+                setLoading(false); // Stop loading
             }
         };
 
@@ -61,11 +67,17 @@ const TaskDashboard = () => {
                 <Link onClick={() => { setFilter('Completed') }} className="tab">Completed</Link>
             </div>
 
-            <Routes>
-                <Route path="/" element={<TaskList tasks={tasks} filter={filter} handleDelete={handleDelete} />} />
-                <Route path="/tasks/pending" element={<TaskList tasks={tasks} filter={filter || "Pending"} handleDelete={handleDelete} />} />
-                <Route path="/tasks/completed" element={<TaskList tasks={tasks} filter={filter || "Completed"} handleDelete={handleDelete} />} />
-            </Routes>
+            {loading ? (
+                <p className="loading">Loading tasks...</p>
+            ) : error ? (
+                <p className="error">{error}</p>
+            ) : (
+                <Routes>
+                    <Route path="/" element={<TaskList tasks={tasks} filter={filter} handleDelete={handleDelete} />} />
+                    <Route path="/tasks/pending" element={<TaskList tasks={tasks} filter={filter || "Pending"} handleDelete={handleDelete} />} />
+                    <Route path="/tasks/completed" element={<TaskList tasks={tasks} filter={filter || "Completed"} handleDelete={handleDelete} />} />
+                </Routes>
+            )}
         </div>
     );
 };
