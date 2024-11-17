@@ -10,14 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-// const corsOptions = {
-//     origin: 'http://localhost:3000',
-//     credentials: true,
-// };
 const corsOptions = {
-    origin: 'https://task-management-app-2024.web.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: 'http://localhost:3000',
+    credentials: true,
 };
 
 
