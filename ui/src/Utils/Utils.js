@@ -1,3 +1,3 @@
-const Host = "http://localhost:4000";
+const Host = process.env.REACT_APP_HOST_URL;
 
 export default Host;
