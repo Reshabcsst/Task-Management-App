@@ -17,11 +17,6 @@ Search & Filter: Quickly find tasks using advanced search and filtering options.
 Responsive Design: Optimized for both desktop and mobile users.
 
 
-🖼️ Preview
-https://task-management-app-2024.web.app
-
-
-
 📦 Installation
 
 Prerequisites
@@ -35,11 +30,10 @@ Steps
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/task-management-app.git  
-cd task-management-app
+git clone ...
 
 
-2. Install dependencies:
+3. Install dependencies:
 
 npm install
 
@@ -57,11 +51,11 @@ http://localhost:3000
 
 🛠️ Technologies Used
 
-Frontend: React.js, Tailwind CSS/SCSS
+Frontend: React.js, SCSS
 
 Backend: Node.js, Express.js
 
-Database: MongoDB/PostgreSQL
+Database: MongoDB
 
 State Management: Redux/Context API
 
@@ -71,6 +65,7 @@ Authentication: JWT-based authentication
 🌟 Demo
 
 Check out the live demo here.
+https://task-management-app-2024.web.app
 
 🤝 Contributing
 
