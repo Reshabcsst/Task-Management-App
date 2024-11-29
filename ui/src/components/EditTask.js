@@ -80,38 +80,40 @@ const EditTask = () => {
     };
 
     return (
-        <div className="edit-task-container">
-            <form onSubmit={handleSubmit} className="edit-task-form">
-                <h2>Edit Task</h2>
-                {error && <div className="error-message">{error}</div>}
-                {success && <div className="success-message">{success}</div>}
+        <div className='into'>
+            <div className="edit-task-container">
+                <form onSubmit={handleSubmit} className="edit-task-form">
+                    <h2>Edit Task</h2>
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="success-message">{success}</div>}
 
-                <input
-                    type="text"
-                    name="title"
-                    value={task.title}
-                    onChange={handleChange}
-                    placeholder="Task Title"
-                />
-                <textarea
-                    name="description"
-                    value={task.description}
-                    onChange={handleChange}
-                    placeholder="Task Description"
-                />
-                <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-                <input
-                    type="date"
-                    name="dueDate"
-                    value={task.dueDate}
-                    onChange={handleChange}
-                />
-                <button type="submit">Update</button>
-            </form>
+                    <input
+                        type="text"
+                        name="title"
+                        value={task.title}
+                        onChange={handleChange}
+                        placeholder="Task Title"
+                    />
+                    <textarea
+                        name="description"
+                        value={task.description}
+                        onChange={handleChange}
+                        placeholder="Task Description"
+                    />
+                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    <input
+                        type="date"
+                        name="dueDate"
+                        value={task.dueDate}
+                        onChange={handleChange}
+                    />
+                    <button type="submit">Update</button>
+                </form>
+            </div>
         </div>
     );
 };

@@ -45,4 +45,9 @@ router.get('/check-auth', authMiddleware, (req, res) => {
 });
 
 
+// Health check route
+router.get('/check', (req, res) => {
+  res.status(200).json({ message: 'Server is running' });
+});
+
 module.exports = router;

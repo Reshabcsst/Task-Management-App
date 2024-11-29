@@ -1,13 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { createContext, useEffect } from 'react';
 import axios from 'axios';
 import Host from '../Utils/Utils';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(JSON.parse(localStorage.getItem('setIsAuthenticated')));
-    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -16,8 +13,7 @@ export const AuthProvider = ({ children }) => {
                 headers: { Authorization: `Bearer ${token}` }
             })
                 .then(() => {
-                    setIsAuthenticated(true);
-                    localStorage.setItem('setIsAuthenticated', true);
+                    localStorage.setItem('isToken', true);
                 })
                 .catch(() => {
                     logout();
@@ -29,19 +25,18 @@ export const AuthProvider = ({ children }) => {
     const login = async (credentials) => {
         const { data } = await axios.post(`${Host}/api/login`, credentials);
         localStorage.setItem('token', data.token);
+        localStorage.setItem('isToken', true);
         window.location.reload();
-        setIsAuthenticated(true);
     };
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('setIsAuthenticated');
-        setIsAuthenticated(false);
-        navigate('/'); 
+        localStorage.setItem('isToken', false);
+        window.location.reload();
     };
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ login, logout }}>
             {children}
         </AuthContext.Provider>
     );

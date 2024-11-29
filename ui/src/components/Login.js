@@ -18,43 +18,45 @@ const Login = () => {
             return;
         }
 
-        setLoading(true); 
-        setError(''); 
+        setLoading(true);
+        setError('');
 
         try {
             await login({ username, password });
-            setLoading(false); 
+            setLoading(false);
             navigate('/');
         } catch (error) {
             console.error('Login error:', error);
             setError('Invalid username or password');
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
     return (
-        <div className="login-form">
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                {error && <div className="error-popup">{error}</div>}
+        <div className='into'>
+            <div className="login-form">
+                <form onSubmit={handleSubmit}>
+                    <h2>Login</h2>
+                    {error && <div className="error-popup">{error}</div>}
 
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    disabled={loading} 
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    disabled={loading} 
-                />
-                <p>Don't have an account?<span onClick={() => navigate('/register')}> Sign Up</span></p>
-                <button type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button> 
-            </form>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        disabled={loading}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        disabled={loading}
+                    />
+                    <p>Don't have an account?<span onClick={() => navigate('/register')}> Sign Up</span></p>
+                    <button type="submit" disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
+                </form>
+            </div>
         </div>
     );
 };

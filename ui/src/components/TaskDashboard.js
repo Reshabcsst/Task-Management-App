@@ -6,6 +6,8 @@ import AuthContext from '../Context/AuthContext';
 
 const TaskDashboard = () => {
     const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [filter, setFilter] = useState('');
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,6 +18,7 @@ const TaskDashboard = () => {
             if (!token) return;
 
             try {
+                setLoading(true); // Start loading
                 const response = await axios.get(`${Host}/api/tasks`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -23,7 +26,10 @@ const TaskDashboard = () => {
                 });
                 setTasks(response.data);
             } catch (error) {
+                setError('Error fetching tasks. Please try again.');
                 console.error('Error fetching tasks:', error);
+            } finally {
+                setLoading(false); // Stop loading
             }
         };
 
@@ -61,11 +67,17 @@ const TaskDashboard = () => {
                 <Link onClick={() => { setFilter('Completed') }} className="tab">Completed</Link>
             </div>
 
-            <Routes>
-                <Route path="/" element={<TaskList tasks={tasks} filter={filter} handleDelete={handleDelete} />} />
-                <Route path="/tasks/pending" element={<TaskList tasks={tasks} filter={filter || "Pending"} handleDelete={handleDelete} />} />
-                <Route path="/tasks/completed" element={<TaskList tasks={tasks} filter={filter || "Completed"} handleDelete={handleDelete} />} />
-            </Routes>
+            {loading ? (
+                <p className="loading">Loading tasks...</p>
+            ) : error ? (
+                <p className="error">{error}</p>
+            ) : (
+                <Routes>
+                    <Route path="/" element={<TaskList tasks={tasks} filter={filter} handleDelete={handleDelete} />} />
+                    <Route path="/tasks/pending" element={<TaskList tasks={tasks} filter={filter || "Pending"} handleDelete={handleDelete} />} />
+                    <Route path="/tasks/completed" element={<TaskList tasks={tasks} filter={filter || "Completed"} handleDelete={handleDelete} />} />
+                </Routes>
+            )}
         </div>
     );
 };
@@ -73,17 +85,28 @@ const TaskDashboard = () => {
 const TaskList = ({ tasks, filter, handleDelete }) => {
     const calculateTimeLeft = (dueDate) => {
         const currentDate = new Date();
-        console.log(dueDate)
         const dueDateObj = new Date(dueDate);
-        const timeDifference = dueDateObj - currentDate;
 
-        if (timeDifference <= 0) {
-            return 'You are late';
+        const midnightCurrentDate = new Date(currentDate);
+        midnightCurrentDate.setHours(0, 0, 0, 0);
+
+        const midnightDueDate = new Date(dueDateObj);
+        midnightDueDate.setHours(0, 0, 0, 0);
+
+        const dateDifference = midnightDueDate - midnightCurrentDate;
+
+        if (dateDifference < 0) {
+            return 'Due date expired';
+        } else if (dateDifference === 0) {
+            return 'Due today';
         } else {
+            const timeDifference = dueDateObj - currentDate;
+
             const daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             const hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
             return `${daysLeft}d ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
         }
     };
@@ -125,8 +148,12 @@ const TaskList = ({ tasks, filter, handleDelete }) => {
                     const showTimeRemaining = task.status !== 'Completed' && timeLeft !== 'You are late';
 
                     return (
-                        <li key={task._id}  className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
-                            <h3>{task.title}</h3>
+                        <li key={task._id} className={`task-item ${task.status === 'Pending' ? 'status-pending' : task.status === 'In Progress' ? 'status-in-progress' : 'status-complete'}`}>
+                            <h3
+                                style={{
+                                    color: task.status === 'Pending' ? 'red' : task.status === 'In Progress' ? '#d5d500' : 'green'
+                                }}
+                            >{task.title}</h3>
                             <p>{task.description}</p>
                             <p>Status: {task.status}</p>
                             <p>Due Date: {dueDateFormatted}</p>

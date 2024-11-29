@@ -4,6 +4,37 @@
   box-sizing: border-box;
 }
 
+.loading {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.error {
+  height: 50dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+}
+
+.server-error {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-align: center;
+}
+
 .task-dashboard {
   max-width: 600px;
   margin: auto;
@@ -19,6 +50,7 @@
 .tabs {
   display: flex;
   justify-content: space-between;
+  overflow-x: auto;
   margin-bottom: 20px;
 }
 
@@ -56,6 +88,7 @@
   text-decoration: none;
   color: #333;
   padding: 10px 15px;
+  flex-shrink: 0;
   border-bottom: 2px solid transparent;
   transition: color 0.3s, border-color 0.3s;
 }
@@ -76,9 +109,14 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: .6rem;
+  color: rgb(56, 56, 56);
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item p {
+  font-weight: 500;
 }
 
 
@@ -89,7 +127,7 @@
 
 .status-in-progress {
   background-color: #fffbe6;
-  border: 1px solid #fffacc;
+  border: 1px solid #fff6a3;
 }
 
 .status-complete {
@@ -99,7 +137,7 @@
 
 .task-item h3 {
   margin-top: 0;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .btn {
@@ -128,7 +166,6 @@
 /* Edit Task */
 .edit-task-form {
   max-width: 600px;
-  margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -182,7 +219,6 @@
 /* Create Task */
 .create-task-form {
   max-width: 600px;
-  margin: 40px auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -254,9 +290,16 @@
 
 
 /* Login */
+.into{
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .login-form {
   max-width: 400px;
-  margin: 5rem auto 0 auto;
+  align-self: center;
+  justify-self: center;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -323,7 +366,6 @@
 /* Register */
 .register-form {
   max-width: 400px;
-  margin: 5rem auto 0 auto;
   padding: 20px;
   border-radius: 8px;
   background-color: #f4f7fb;
@@ -346,6 +388,7 @@
   font-weight: 500;
   cursor: pointer;
 }
+
 .register-form input {
   width: 100%;
   padding: 12px;
