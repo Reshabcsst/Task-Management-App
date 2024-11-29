@@ -2,7 +2,7 @@
 
 A sleek, feature-rich task management application designed to boost productivity and streamline your workflow.
 
-🚀 Features
+<h2>🚀 Features</h2>
 
 Task Creation: Add, edit, and delete tasks effortlessly.
 
@@ -17,7 +17,7 @@ Search & Filter: Quickly find tasks using advanced search and filtering options.
 Responsive Design: Optimized for both desktop and mobile users.
 
 
-📦 Installation
+<h2>📦 Installation</h2>
 
 Prerequisites
 
@@ -49,7 +49,7 @@ http://localhost:3000
 ```
 
 
-🛠️ Technologies Used
+<h2>🛠️ Technologies Used</h2>
 
 Frontend: React.js, SCSS
 
@@ -62,13 +62,13 @@ State Management: Context API
 Authentication: JWT-based authentication
 
 
-🌟 Demo
+<h2>🌟 Demo</h2>
 
 Check out the live demo here.
 ```shell
 https://task-management-app-2024.web.app
 ```
-🤝 Contributing
+<h2>🤝 Contributing</h2>
 
 Contributions are welcome!
 
@@ -90,7 +90,7 @@ git commit -m "Add your feature name"
 git push origin feature/your-feature-name
 ``` 
 
-📧 Contact
+<h2>📧 Contact</h2>
 
 For support or inquiries:
-📫 Email: naskarreshab2003@gmail.com
+<h3>📫 Email: naskarreshab2003@gmail.com</h3>
