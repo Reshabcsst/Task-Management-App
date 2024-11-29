@@ -93,4 +93,4 @@ git push origin feature/your-feature-name
 <h2>📧 Contact</h2>
 
 For support or inquiries:
-<h3>📫 Email: <a>naskarreshab2003@gmail.com</a></h3>
+<h3>📫 Email: [naskarreshab2003@gmail.com](mailto:naskarreshab2003@gmail.com)</h3>
