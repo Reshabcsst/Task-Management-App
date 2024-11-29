@@ -29,24 +29,24 @@ npm/yarn
 Steps
 
 1. Clone the repository:
-
+```shell
 git clone ...
-
+```
 
 3. Install dependencies:
-
+```shell
 npm install
-
+```
 
 3. Run the app:
-
+```shell
 npm start
-
+```
 
 4. Open in your browser:
-
+```shell
 http://localhost:3000
-
+```
 
 
 🛠️ Technologies Used
@@ -57,7 +57,7 @@ Backend: Node.js, Express.js
 
 Database: MongoDB
 
-State Management: Redux/Context API
+State Management: Context API
 
 Authentication: JWT-based authentication
 
@@ -65,8 +65,9 @@ Authentication: JWT-based authentication
 🌟 Demo
 
 Check out the live demo here.
+```shell
 https://task-management-app-2024.web.app
-
+```
 🤝 Contributing
 
 Contributions are welcome!
@@ -75,24 +76,21 @@ Contributions are welcome!
 
 
 2. Create a new branch:
-
+```shell
 git checkout -b feature/your-feature-name
-
+```
 
 3. Commit your changes:
-
+```shell
 git commit -m "Add your feature name"
-
+```
 
 4. Push to the branch:
-
+```shell
 git push origin feature/your-feature-name
-
-
-5. Open a Pull Request.
-   
+``` 
 
 📧 Contact
 
 For support or inquiries:
-📫 Email:naskarreshab2003@gmail.com
+📫 Email: naskarreshab2003@gmail.com
