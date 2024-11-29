@@ -100,7 +100,7 @@ git push origin feature/your-feature-name
 
 🧑‍💻 Authors
 
-Your Name - Your GitHub
+Reshab Naskar -https://github.com/Reshabcsst
 
 
 📜 License
@@ -110,5 +110,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 📧 Contact
 
 For support or inquiries:
-📫 Email: your-email@example.com
-🌐 Website: your-website.com
+📫 Email:naskarreshab2003@gmail.com
